@@ -20,10 +20,10 @@
             <h2>a) <code>nl2br</code> avec des apostrophes</h2>
             <?php
                 $s = 'une ligne\n2 lignes\n3 lignes';
-                // TODO $r = utilisation du filtre nl2br
-                $r = '';//todo ligne à supprimer, présente pour la compilation
+                $r = nl2br($s);
                 echo 'avant : -&gt;' . $s . '&lt-' . EOLbr;
                 echo 'après : -&gt;' . $r . '&lt-' . EOLbr;
+                echo 'Les \n ne sont pas remplacés lorsqu\'ils sont entre apostrophes.';
             ?>
         </div>
 
@@ -31,8 +31,7 @@
             <h2>b) <code>nl2br</code> avec des guillemets</h2>
             <?php
                 $s = "une ligne\n2 lignes\n3 lignes";
-                // TODO $r = utilisation du filtre nl2br
-                $r = '';//todo ligne à supprimer, présente pour la compilation
+                $r = nl2br($s);
                 echo 'avant : -&gt;' . $s . '&lt-' . EOLbr;
                 echo 'après : -&gt;' . $r . '&lt-' . EOLbr;
             ?>
@@ -54,7 +53,7 @@
             <?php
                 $s = 'une ligne<br />2 lignes<br />3 lignes';
                 // TODO $r = utilisation du filtre str_replace
-                $r = '';//todo ligne à supprimer, présente pour la compilation
+                $r = str_replace("<br />", "\n", $s);
                 echo 'avant : -&gt;' . $s . '&lt-' . EOLbr;
                 echo 'après : -&gt;' . $r . '&lt-' . EOLbr;
             ?>
@@ -64,8 +63,9 @@
             <h2>e) <code>&lt;br /&gt;</code>, <code>&lt;br/&gt;</code>, <code>&lt;br&gt;</code> to <code>\n</code></h2>
             <?php
                 $s = 'une ligne<br />2 lignes<br/>3 lignes<br>4 lignes';
-                // TODO $r = utilisation 3 fois du filtre str_replace
-                $r = '';//todo ligne à supprimer, présente pour la compilation
+                $r = str_replace("<br />", "\n", $s);
+                $r = str_replace("<br/>", "\n", $r);
+                $r = str_replace("<br>", "\n", $r);
                 echo 'avant : -&gt;' . $s . '&lt-' . EOLbr;
                 echo 'après : -&gt;' . $r . '&lt-' . EOLbr;
             ?>
@@ -75,8 +75,7 @@
             <h2>e) <code>&lt;br /&gt;</code>, <code>&lt;br/&gt;</code>, <code>&lt;br&gt;</code> to <code>\n</code> (autre solution)</h2>
             <?php
                 $s = 'une ligne<br />2 lignes<br/>3 lignes<br>4 lignes';
-                // TODO $r = utilisation du filtre preg_replace
-                $r = '';//todo ligne à supprimer, présente pour la compilation
+                $r = preg_replace('/<br(| \/|\/)>/', "\n", $s);
                 echo 'avant : -&gt;' . $s . '&lt-' . EOLbr;
                 echo 'après : -&gt;' . $r . '&lt-' . EOLbr;
             ?>
@@ -86,8 +85,7 @@
             <h2>e) <code>&lt;br /&gt;</code>, <code>&lt;br/&gt;</code>, <code>&lt;br&gt;</code> to <code>\n</code> (autre solution)</h2>
             <?php
                 $s = 'une ligne<br />2 lignes<br/>3 lignes<br>4 lignes';
-                // TODO $r = utilisation une seule fois du filtre str_replace
-                $r = '';//todo ligne à supprimer, présente pour la compilation
+                $r = str_replace(['<br>', '<br />', '<br/>'], "\n", $s);
                 echo 'avant : -&gt;' . $s . '&lt-' . EOLbr;
                 echo 'après : -&gt;' . $r . '&lt-' . EOLbr;
             ?>

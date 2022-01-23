@@ -34,7 +34,8 @@ echo 'Le mot de passe en clair est : ->' . $not_encoded . '<-' . EOLn;
 echo EOLn;
 echo encadre('a) md5', WIDTH_H2);
 
-// TODO $r1 = utilisation de md5
+$r1 = md5($not_encoded);
+$r2 = md5($not_encoded);
 // TODO $r2 = même utilisation
 echo '      -> ' . $r1 . EOLn;
 echo '(bis) -> ' . $r2 . EOLn;
@@ -49,6 +50,8 @@ echo encadre('b) crypt', WIDTH_H2);
 echo 'avec le grain de sel "salt" :' . EOLn;
 // TODO $r1 = utilisation de crypt avec le grain de sel 'salt' (ou ce que vous voulez)
 // TODO $r2 = même utilisation
+$r1 = crypt($not_encoded, "salt");
+$r2 = crypt($not_encoded, "salt");
 echo '         -> ' . $r1 . EOLn;
 echo '   (bis) -> ' . $r2 . EOLn;
 compare($r1, $r2, '            ');
@@ -56,6 +59,8 @@ compare($r1, $r2, '            ');
 echo 'avec le grain de sel "pepper" :' . EOLn;
 // TODO $r1 = utilisation de crypt avec le grain de sel 'pepper' (ou ce que vous voulez)
 // TODO $r2 = même utilisation
+$r1 = crypt($not_encoded, "pepper");
+$r2 = crypt($not_encoded, "pepper");
 echo '         -> ' . $r1 . EOLn;
 echo '   (bis) -> ' . $r2 . EOLn;
 compare($r1, $r2, '            ');
@@ -67,6 +72,8 @@ echo encadre('c) sha1', WIDTH_H2);
 
 // TODO $r1 = utilisation de sha1
 // TODO $r2 = même utilisation
+$r1 = sha1($not_encoded);
+$r2 = sha1($not_encoded);
 echo '      -> ' . $r1 . EOLn;
 echo '(bis) -> ' . $r2 . EOLn;
 compare($r1, $r2, '         ');
@@ -79,6 +86,8 @@ echo encadre('d) password_hash', WIDTH_H2);
 echo 'avec "PASSWORD_DEFAULT" :' . EOLn;
 // TODO $r1 = utilisation de password_hash avec l'option PASSWORD_DEFAULT
 // TODO $r2 = même utilisation
+$r1 = password_hash($not_encoded, PASSWORD_DEFAULT);
+$r2 = password_hash($not_encoded, PASSWORD_DEFAULT);
 echo '         -> ' . $r1 . EOLn;
 echo '   (bis) -> ' . $r2 . EOLn;
 compare($r1, $r2, '            ');
@@ -86,6 +95,8 @@ compare($r1, $r2, '            ');
 echo 'avec "PASSWORD_BCRYPT" :' . EOLn;
 // TODO $r1 = utilisation de password_hash avec l'option PASSWORD_BCRYPT
 // TODO $r2 = même utilisation
+$r1 = password_hash($not_encoded, PASSWORD_BCRYPT);
+$r2 = password_hash($not_encoded, PASSWORD_BCRYPT);
 echo '         -> ' . $r1 . EOLn;
 echo '   (bis) -> ' . $r2 . EOLn;
 compare($r1, $r2, '            ');
@@ -93,6 +104,8 @@ compare($r1, $r2, '            ');
 echo 'avec "PASSWORD_ARGON2I" :' . EOLn;
 // TODO $r1 = utilisation de password_hash avec l'option PASSWORD_ARGON2I
 // TODO $r2 = même utilisation
+$r1 = password_hash($not_encoded, PASSWORD_ARGON2I);
+$r2 = password_hash($not_encoded, PASSWORD_ARGON2I);
 echo '         -> ' . $r1 . EOLn;
 echo '   (bis) -> ' . $r2 . EOLn;
 compare($r1, $r2, '            ');
@@ -100,6 +113,8 @@ compare($r1, $r2, '            ');
 echo 'avec "PASSWORD_ARGON2ID" :' . EOLn;
 // TODO $r1 = utilisation de password_hash avec l'option PASSWORD_ARGON2ID
 // TODO $r2 = même utilisation
+$r1 = password_hash($not_encoded, PASSWORD_ARGON2ID);
+$r2 = password_hash($not_encoded, PASSWORD_ARGON2ID);
 echo '         -> ' . $r1 . EOLn;
 echo '   (bis) -> ' . $r2 . EOLn;
 compare($r1, $r2, '            ');
@@ -135,8 +150,8 @@ if ($r1 == $r2)
     echo 'Les mots de passe ont les mêmes encodages !!!' . EOLn;
     echo 'Aurait-on trouvé une collision ???' . EOLn;
     // décommenter les 3 lignes
-    //echo 'mdp1 : ' . $r1 . EOLn;
-    //echo 'mdp2 : ' . $r2 . EOLn;
-    //echo 'où est le problème ?' . EOLn;
+    echo 'mdp1 : ' . $r1 . EOLn;
+    echo 'mdp2 : ' . $r2 . EOLn;
+    echo 'où est le problème ?' . EOLn;
 }
 

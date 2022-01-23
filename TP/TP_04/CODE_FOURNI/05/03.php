@@ -31,21 +31,21 @@
             <h3>avec ENT_NOQUOTES</h3>
             <?php
                 // TODO $r = utilisation du filtre htmlspecialchars
-                $r = '';//todo ligne à supprimer, présente pour la compilation
+                $r = htmlspecialchars($not_encoded, ENT_NOQUOTES);//todo ligne à supprimer, présente pour la compilation
                 echo "<p>" . $r . "</p>";
             ?>
 
             <h3>avec ENT_QUOTES|ENT_HTML401</h3>
             <?php
                 // TODO $r = utilisation du filtre htmlspecialchars
-                $r = '';//todo ligne à supprimer, présente pour la compilation
+                $r = htmlspecialchars($not_encoded, ENT_QUOTES|ENT_HTML401);
                 echo "<p>" . $r . "</p>";
             ?>
 
             <h3>avec ENT_QUOTES|ENT_HTML5</h3>
             <?php
                 // TODO $r = utilisation du filtre htmlspecialchars
-                $r = '';//todo ligne à supprimer, présente pour la compilation
+                $r = htmlspecialchars($not_encoded, ENT_QUOTES|ENT_HTML5);
                 echo "<p>" . $r . "</p>";
             ?>
         </div>
@@ -56,21 +56,21 @@
             <h3>avec ENT_NOQUOTES</h3>
             <?php
                 // TODO $r = ???
-                $r = '';//todo ligne à supprimer, présente pour la compilation
+                $r = htmlspecialchars(htmlspecialchars($not_encoded, ENT_NOQUOTES), ENT_NOQUOTES);//todo ligne à supprimer, présente pour la compilation
                 echo "<p>" . $r . "</p>";
             ?>
 
             <h3>avec ENT_QUOTES|ENT_HTML401</h3>
             <?php
                 // TODO $r = ???
-                $r = '';//todo ligne à supprimer, présente pour la compilation
+                $r = htmlspecialchars(htmlspecialchars($not_encoded, ENT_QUOTES|ENT_HTML401), ENT_QUOTES|ENT_HTML401);;//todo ligne à supprimer, présente pour la compilation
                 echo "<p>" . $r . "</p>";
             ?>
 
             <h3>avec ENT_QUOTES|ENT_HTML5</h3>
             <?php
                 // TODO $r = ???
-                $r = '';//todo ligne à supprimer, présente pour la compilation
+                $r = htmlspecialchars(htmlspecialchars($not_encoded, ENT_QUOTES|ENT_HTML5), ENT_QUOTES|ENT_HTML5);//todo ligne à supprimer, présente pour la compilation
                 echo "<p>" . $r . "</p>";
             ?>
         </div>

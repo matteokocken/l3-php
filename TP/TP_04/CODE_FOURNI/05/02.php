@@ -14,8 +14,7 @@ echo EOLn;
 echo encadre('a) addshlashes', WIDTH_H2);
 
 $s = "foie\"foi'fois\\foix";   // i.e : foie"foi'fois\foix
-// TODO $r = utilisation du filtre addslashes
-$r = '';//todo ligne à supprimer, présente pour la compilation
+$r = addslashes($s);//todo ligne à supprimer, présente pour la compilation
 echo 'avant : ->' . $s . '<-' . EOLn;
 echo 'après : ->' . $r . '<-' . EOLn;
 
@@ -25,11 +24,13 @@ echo encadre('b) stripshlashes', WIDTH_H2);
 
 $s = "a\"b'c\\A\\\"B\\'C\\\\D";   // i.e. : a"b'c\A\"B\'C\\D
 // TODO $r = utilisation du filtre stripslashes
-$r = '';//todo ligne à supprimer, présente pour la compilation
+$r = stripslashes($s);//todo ligne à supprimer, présente pour la compilation
 echo 'avant : ->' . $s . '<-' . EOLn;
 echo 'après : ->' . $r . '<-' . EOLn;
-// TODO $r = utilisation une nouvelle fois du filtre stripslashes
+// TODO $r = utilisation une nouvelle fois du filtre 
+$r = stripslashes($r);
 echo 'après : ->' . $r . '<-' . EOLn;
 // TODO $r = utilisation une nouvelle fois du filtre stripslashes
+$r = stripslashes($r);
 echo 'après : ->' . $r . '<-' . EOLn;
 
